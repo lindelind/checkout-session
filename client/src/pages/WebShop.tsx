@@ -1,4 +1,15 @@
+import Checkout from "../components/Checkout";
+import ProductList from "../components/ProductList";
+
 
 export const WebShop = () => {
-  return <>WebShop</>;
+
+    
+  return (
+    <>
+      
+      <ProductList />
+      <Checkout />
+    </>
+  );
 };
