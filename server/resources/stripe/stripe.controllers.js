@@ -1,12 +1,15 @@
 
 
 const initStripe = require("../../utils/stripe");
+const fs = require("fs").promises
 
 const createCheckoutSession = async (req, res) => {
   const cart = req.body;
   const stripe = initStripe();
+  console.log(cart);
 
   const session = await stripe.checkout.sessions.create({
+    customer: req.session.customer.id,
     mode: "payment",
     line_items: cart.map((checkoutItem) => {
       return {
@@ -14,12 +17,49 @@ const createCheckoutSession = async (req, res) => {
         quantity: checkoutItem.quantity,
       };
     }),
-    success_url: "http://localhost:5173",
+    success_url: "http://localhost:5173/confirmation",
     cancel_url: "http://localhost:5173",
   });
 
-  res.status(200).json({ url: session.url });
+  res.status(200).json({ url: session.url, sessionId: session.id });
+  console.log(session.id)
 };
+
+const verifySession = async (req, res) => {
+    const stripe = initStripe()
+
+    const sessionId = req.body.sessionId
+
+    // const orderExists = orders.find((o) => o.orderNumber === sessionId);
+
+    // if (!orderExists) {
+
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+  
+
+        if (session.payment_status === "paid") {
+        const lineItems = await stripe.checkout.sessions.listLineItems(sessionId)
+
+
+        const order = {
+            orderNumber: Math.floor(Math.random() * 100000000),
+            customerName: session.customer_details.name,
+            products: lineItems.data,
+            total: session.amount_total,
+            date: new Date()
+        }
+
+        const orders = JSON.parse(await fs.readFile("../server/data/orders.json"))
+        orders.push(order)
+        await fs.writeFile("../server/data/orders.json", JSON.stringify(orders, null, 4))
+
+        res.status(200).json({ verified: true })
+    }
+  }
+
+// }
+    
+
 const getProducts = async (req, res) => {
   const stripe = initStripe();
   const productPriceData = await stripe.prices.list({
@@ -29,4 +69,4 @@ const getProducts = async (req, res) => {
   res.status(200).json(productPriceData);
 };
 
-module.exports = { createCheckoutSession, getProducts };
+module.exports = { createCheckoutSession, getProducts, verifySession};

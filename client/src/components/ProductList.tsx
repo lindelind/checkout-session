@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface ProductData {
+  price: string;
   description: string;
   unit_amount: number;
   name: string
   product: {
+    default_price: any;
     id: string;
     name: string;
     images: string;
@@ -15,6 +17,7 @@ interface ProductData {
 interface CartItem {
   name: string;
   quantity: number;
+  price: string
 }
 
 export const ProductList = () => {
@@ -34,42 +37,45 @@ export const ProductList = () => {
 
       if (response.status === 200) {
         setProducts(response.data.data);
+        console.log(response.data.data)
       }
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
 
-  const addToCart = (item: ProductData) => {
-    try {
-      const existingCart: CartItem[] =
-        JSON.parse(localStorage.getItem("varukorg")) || [];
-      let updatedCart: CartItem[] = [...existingCart];
-      let alreadyExists = false;
+ const addToCart = (item: ProductData) => {
+  try {
+    const existingCart: CartItem[] =
+      JSON.parse(localStorage.getItem("varukorg")) || [];
+    let updatedCart: CartItem[] = [...existingCart];
+    let alreadyExists = false;
 
-      updatedCart.forEach((cartItem) => {
-        if (cartItem.name === item.name) {
-          alreadyExists = true;
-          cartItem.quantity = cartItem.quantity ? cartItem.quantity + 1 : 1;
-        }
-      });
-
-      if (!alreadyExists) {
-        const checkoutItem: CartItem = {
-          name: item.name,
-          quantity: 1,
-        };
-        updatedCart.push(checkoutItem);
+    updatedCart.forEach((cartItem) => {
+      if (cartItem.name === item.product.name) { 
+        alreadyExists = true;
+        cartItem.quantity = cartItem.quantity ? cartItem.quantity + 1 : 1;
       }
+    });
 
-      localStorage.setItem("varukorg", JSON.stringify(updatedCart));
-      alert("En " + item.name + " har lagts till i din kundvagn!");
-      showCart();
-    } catch (error) {
-      console.error("Error adding item to cart:", error);
-      alert("Ett fel uppstod vid tillägg av varan till kundvagnen.");
+    if (!alreadyExists) {
+      const checkoutItem: CartItem = {
+        price: item.product.default_price,
+        name: item.product.name,
+        quantity: 1,
+      };
+      updatedCart.push(checkoutItem);
     }
-  };
+
+    localStorage.setItem("varukorg", JSON.stringify(updatedCart));
+    alert("En " + item.product.name + " har lagts till i din kundvagn!");
+    showCart();
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+    alert("Ett fel uppstod vid tillägg av varan till kundvagnen.");
+  }
+};
+
 
   const showCart = () => {
     try {
@@ -88,6 +94,7 @@ export const ProductList = () => {
         {products.map((product) => (
           <div key={product.product.id}>
             <h4>{product.product.name} </h4>
+            <p>{product.product.default_price}</p>
             <img src={product.product.images} alt={product.product.name} />
             <p className="description">{product.description}</p>
             <h4>{product.unit_amount / 100} Kr</h4>
@@ -102,7 +109,7 @@ export const ProductList = () => {
         <div>
           {cartItems.map((item, index) => (
             <div key={index}>
-              {item.name} - Antal: {item.quantity}
+              {item.name} - Antal: {item.quantity}, {item.price}
             </div>
           ))}
         </div>

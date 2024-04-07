@@ -11,22 +11,24 @@ const Checkout = () => {
         return;
       }
 
-    //   if (!isLoggedIn) {
-    //     console.error("Customer not logged in");
-    //     //omdirigera användaren till inloggnings-/registreringssidan
-    //     return;
-    //   }
+      // if (!isLoggedIn) {
+      //   console.error("Customer not logged in");
+      //   //omdirigera användaren till inloggnings-/registreringssidan
+      //   return;
+      // }
 
       const response = await axios.post(
         "http://localhost:3001/payments/create-checkout-session",
         checkoutItem,
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
 
+      localStorage.setItem("sessionId", response.data.sessionId)
       window.location = response.data.url;
     } catch (error) {
       console.error("Error during checkout:", error);
