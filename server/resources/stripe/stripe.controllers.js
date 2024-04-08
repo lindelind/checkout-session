@@ -9,6 +9,9 @@ const createCheckoutSession = async (req, res) => {
   console.log(cart);
 
   const session = await stripe.checkout.sessions.create({
+    shipping_address_collection: {
+      allowed_countries: ["SE"],
+    },
     customer: req.session.customer.id,
     mode: "payment",
     line_items: cart.map((checkoutItem) => {
@@ -29,10 +32,6 @@ const verifySession = async (req, res) => {
     const stripe = initStripe()
 
     const sessionId = req.body.sessionId
-
-    // const orderExists = orders.find((o) => o.orderNumber === sessionId);
-
-    // if (!orderExists) {
 
     const session = await stripe.checkout.sessions.retrieve(sessionId);
   

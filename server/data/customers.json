@@ -1,26 +1,8 @@
 [
   {
-    "id": "cus_PraWCHsk3JYSFM",
-    "name": "ullabritt",
-    "email": "brittan@mejl.se",
-    "password": "$2b$10$Knv4qEyDzkOFalby7o413un8FyREvDAIHZPfAypRpdKCA2LHqzSWS"
-  },
-  {
-    "id": "cus_PrdOq95L52njsP",
-    "name": "Pauline",
-    "email": "pauline@mejl.se",
-    "password": "$2b$10$Oy.aoM7wQTiVelUs/r9BauuxyS923lhOsvDPX8oEUE7d997yGekSO"
-  },
-  {
-    "id": "cus_PrejyRUYwexSv7",
-    "name": "olle",
-    "email": "olle@mejl.se",
-    "password": "$2b$10$iUQWO6tpviaVjqSln1LTUujwfV5G7L5ois75ZnkR5XEEsrPAV8iBG"
-  },
-  {
-    "id": "cus_PreojcsQJ0cuFN",
-    "name": "fanny",
-    "email": "fanny@fanny.se",
-    "password": "$2b$10$SoIqDtNBoy2BWz.88js4QuuO3IQmg4r6vqLDLkZUURDfPBashxUei"
+    "id": "cus_PtAVIXuyyT681Y",
+    "name": "Fanny Svensson",
+    "email": "fanny@svensson.se",
+    "password": "$2b$10$mM3MXBXiWx0DuL7WsOe86O3nDineZZZqmDFoPpEjGc/ThNReslIs2"
   }
 ]

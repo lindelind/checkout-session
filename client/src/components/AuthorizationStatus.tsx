@@ -1,18 +1,14 @@
-import React from "react";
+import { useAuth } from "./AuthProvider";
 
-interface AuthData {
-  customer: string;
-  logout?: () => void; // <-- logout-funktionen är nu valfri
-}
+export const AuthorizationStatus = () => {
+  const { isLoggedIn, logout, customer } = useAuth();
 
-export const AuthorizationStatus: React.FC<AuthData> = ({
-  customer,
-  logout,
-}) => {
   return (
     <div>
-      <h1>{customer ? `Inloggad: ${customer}` : "Utloggad"}</h1>
-      {logout && <button onClick={logout}>Logout</button>}{" "}
+      <h4>{isLoggedIn ? `Inloggad: ${customer?.name}` : "Ej Inloggad"}</h4>
+      {isLoggedIn && logout && <button onClick={logout}>Logout</button>}
     </div>
   );
 };
+
+export default AuthorizationStatus;

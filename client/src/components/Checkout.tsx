@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const Checkout = () => {
+
   const handleCheckout = async () => {
     try {
-      const checkoutItem = JSON.parse(localStorage.getItem("varukorg"));
+      const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
       console.log(checkoutItem);
 
       if (!checkoutItem) {
@@ -11,11 +12,6 @@ const Checkout = () => {
         return;
       }
 
-      // if (!isLoggedIn) {
-      //   console.error("Customer not logged in");
-      //   //omdirigera användaren till inloggnings-/registreringssidan
-      //   return;
-      // }
 
       const response = await axios.post(
         "http://localhost:3001/payments/create-checkout-session",

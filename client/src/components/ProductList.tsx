@@ -15,6 +15,7 @@ interface ProductData {
 }
 
 interface CartItem {
+  priceData: number;
   name: string;
   quantity: number;
   price: string
@@ -47,7 +48,7 @@ export const ProductList = () => {
  const addToCart = (item: ProductData) => {
   try {
     const existingCart: CartItem[] =
-      JSON.parse(localStorage.getItem("varukorg")) || [];
+      JSON.parse(localStorage.getItem("varukorg") || "[]");
     let updatedCart: CartItem[] = [...existingCart];
     let alreadyExists = false;
 
@@ -62,6 +63,7 @@ export const ProductList = () => {
       const checkoutItem: CartItem = {
         price: item.product.default_price,
         name: item.product.name,
+        priceData: item.unit_amount,
         quantity: 1,
       };
       updatedCart.push(checkoutItem);
@@ -77,10 +79,11 @@ export const ProductList = () => {
 };
 
 
+
   const showCart = () => {
     try {
       const existingCart: CartItem[] =
-        JSON.parse(localStorage.getItem("varukorg")) || [];
+        JSON.parse(localStorage.getItem("varukorg") || "[]");
       setCartItems(existingCart);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -94,7 +97,6 @@ export const ProductList = () => {
         {products.map((product) => (
           <div key={product.product.id}>
             <h4>{product.product.name} </h4>
-            <p>{product.product.default_price}</p>
             <img src={product.product.images} alt={product.product.name} />
             <p className="description">{product.description}</p>
             <h4>{product.unit_amount / 100} Kr</h4>
@@ -109,9 +111,12 @@ export const ProductList = () => {
         <div>
           {cartItems.map((item, index) => (
             <div key={index}>
-              {item.name} - Antal: {item.quantity}, {item.price}
+              {item.name} - Antal: {item.quantity} - Pris: {item.quantity * item.priceData/100} Kr
             </div>
           ))}
+          <div>
+            <h4>Totalt: </h4>
+          </div>
         </div>
       </div>
     </div>

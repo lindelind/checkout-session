@@ -1,58 +1,27 @@
-import  { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useAuth } from "../components/AuthProvider"; 
 import { AuthorizationStatus } from "../components/AuthorizationStatus";
 import ProductList from "../components/ProductList";
 import Checkout from "../components/Checkout";
+import { NavLink } from "react-router-dom";
 
 export const WebShop = () => {
-  const [customer, setCustomer] = useState("");
+  const { isLoggedIn, customer, authorize} = useAuth(); 
 
-  const authorize = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:3001/api/auth/authorize",
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (response.status === 200) {
-        setCustomer(response.data.email);
-      } else {
-        setCustomer("");
-      }
-    } catch (error) {
-      console.error("Error during authorization:", error);
-    }
-  };
-
-  useEffect(() => {
-    authorize();
-  }, []);
-
-  const logout = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/auth/logout",
-        null,
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (response.status === 200) {
-        setCustomer("");
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
+   useEffect(() => {
+     authorize();
+   }, [authorize, isLoggedIn, customer]);
 
   return (
     <>
-      <AuthorizationStatus customer={customer} />
-      <ProductList />
-      <Checkout />
-    </>
+      <NavLink to={"/"}>Tillbaka till startsidan</NavLink>
+      <AuthorizationStatus/>
+       {isLoggedIn && customer && (
+        <>
+          <ProductList />
+          <Checkout />
+        </>
+      )}
+      </>
   );
 };

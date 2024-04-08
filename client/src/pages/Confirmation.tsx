@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Confirmation = () => {
   const [verified, setVerified] = useState(false);
@@ -9,9 +10,7 @@ export const Confirmation = () => {
 
  useEffect(() => {
    if (!verified) {
-     console.log("nu körs jag");
      const verifySession = async () => {
-       console.log("och jag hoppar in i funktionen");
        let sessionId;
        const dataFromLs = localStorage.getItem("sessionId");
         sessionId = dataFromLs;
@@ -41,6 +40,7 @@ export const Confirmation = () => {
 
   return (
     <div>
+      <NavLink to={"/webshop"}>Tillbaka till Webshop</NavLink>
       <h3>{verified && !isLoading ? "TACK FÖR DITT KÖP ✅" : "Loading..."}</h3>
     </div>
   );

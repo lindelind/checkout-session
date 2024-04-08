@@ -6,7 +6,7 @@ interface RegisterData {
 }
 
 export const RegisterForm: React.FC<RegisterData> = ({ handleRegister }) => {
-  const [registerData, setRegisterData] = useState({ name: "", email: "", password: "" });
+  const [registerData, setRegisterData] = useState({ name: "", email: "",address: "" ,password: "" });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

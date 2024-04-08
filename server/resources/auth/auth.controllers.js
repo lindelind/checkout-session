@@ -31,7 +31,7 @@ const register = async (req, res) => {
 
   const customerId = addCustomer.id;
 
-  req.session.customer = { id: customerId, name, email, password: hashedPassword };
+//   req.session.customer = { id: customerId, name, email, password: hashedPassword };
 
   //spara till js-filen
   const newCustomer = {
@@ -63,7 +63,7 @@ const login = async (req, res) => {
   req.session.customer = customerExists;
 
   //skicka tillbaka ett svar
-  res.status(200).json(customerExists.email);
+  res.status(200).json(customerExists);
   console.log(req.session.customer);
 };
 
