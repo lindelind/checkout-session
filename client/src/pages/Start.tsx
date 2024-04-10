@@ -11,7 +11,6 @@ export const Start = () => {
   const { isLoggedIn, customer, authorize} = useAuth();
 
   useEffect(() => {
-    authorize(); 
   }, [authorize, isLoggedIn, customer]);
 
   const handleLogin = async (loginData: LoginData) => {

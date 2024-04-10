@@ -9,7 +9,6 @@ export const WebShop = () => {
   const { isLoggedIn, customer, authorize} = useAuth(); 
 
    useEffect(() => {
-     authorize();
    }, [authorize, isLoggedIn, customer]);
 
   return (
