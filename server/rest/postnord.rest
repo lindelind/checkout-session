@@ -1,0 +1,6 @@
+GET http://localhost:3001/api/postnord/servicepoints
+
+####
+
+
+GET https://atapi2.postnord.com/rest/businesslocation/v5/servicepoints/nearest/byaddress?apikey={apikey}1&returnType=json&countryCode=SE&agreementCountry=SE&city=Örebro&postalCode=70224&streetName=Kungsgatan&streetNumber=35&numberOfServicePoints=10&srId=EPSG:4326&context=optionalservicepoint&responseFilter=public&typeId=24,25,54&callback=jsonp

@@ -1,6 +1,11 @@
 import axios from "axios";
+import { redirect } from "react-router-dom";
+import { useAuth } from "./AuthProvider";
+
 
 const Checkout = () => {
+
+   const { isLoggedIn, customer } = useAuth();
 
   const handleCheckout = async () => {
     try {
@@ -11,6 +16,10 @@ const Checkout = () => {
         console.error("No item in cart to checkout");
         return;
       }
+
+      // if(!isLoggedIn) {
+      //    return redirect ("/");
+      // }
 
 
       const response = await axios.post(

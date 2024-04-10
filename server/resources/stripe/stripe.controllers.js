@@ -9,9 +9,6 @@ const createCheckoutSession = async (req, res) => {
   console.log(cart);
 
   const session = await stripe.checkout.sessions.create({
-    shipping_address_collection: {
-      allowed_countries: ["SE"],
-    },
     customer: req.session.customer.id,
     mode: "payment",
     line_items: cart.map((checkoutItem) => {
@@ -25,7 +22,7 @@ const createCheckoutSession = async (req, res) => {
   });
 
   res.status(200).json({ url: session.url, sessionId: session.id });
-  console.log(session.id)
+  console.log(session.id);
 };
 
 const verifySession = async (req, res) => {
@@ -43,6 +40,7 @@ const verifySession = async (req, res) => {
         const order = {
             orderNumber: Math.floor(Math.random() * 100000000),
             customerName: session.customer_details.name,
+            customerEmail: session.customer_details.email,
             products: lineItems.data,
             total: session.amount_total,
             date: new Date()

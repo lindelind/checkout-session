@@ -4,6 +4,7 @@ import { Start } from "./pages/Start";
 import { WebShop } from "./pages/WebShop";
 import { NotFound } from "./pages/NotFound";
 import { Confirmation } from "./pages/Confirmation";
+import { OrderHistory } from "./pages/OrderHistory";
 
 export const router = createBrowserRouter([
   {
@@ -20,8 +21,11 @@ export const router = createBrowserRouter([
         path: "/webshop",
         element: <WebShop />,
       },
-      {path:"/confirmation",
-        element: <Confirmation/>},
+      {
+        path: "/orderhistory",
+        element: <OrderHistory />,
+      },
+      { path: "/confirmation", element: <Confirmation /> },
     ],
   },
 ]);

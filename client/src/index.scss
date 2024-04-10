@@ -1,22 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;  
   text-align: center;
 
-}
-
-button {
-  margin: 5px;
-}
-
-img {
-  width: 150px;
-  
 }
 
 .cart-img {
@@ -29,9 +18,20 @@ img {
   justify-content: center;
 }
 
-.description {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+.product-card {
+  margin: 20px;
+  width: 300px;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  img {
+  width: fit-content; 
+  height: 120px;
 }
+.cart-btn {
+  width: 290px;
+}
+
+}
+
 

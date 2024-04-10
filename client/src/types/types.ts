@@ -2,7 +2,11 @@
 interface RegisterData {
     name: string,
     email: string,
-    password: string
+    password: string,
+    street: string, 
+    streetNumber: string,
+    postalCode: string, 
+    city: string
 }
 
 interface LoginData {
@@ -11,8 +15,12 @@ interface LoginData {
 }
 interface customerData {
   name: string;
-  id: string,
+  id: string;
   email: string;
+  street: string;
+  streetNumber: string;
+  postalCode: string;
+  city: string;
 }
 
 interface AuthData {

@@ -95,12 +95,13 @@ export const ProductList = () => {
       <h1>Swedish Fika</h1>
       <div className="product-container">
         {products.map((product) => (
-          <div key={product.product.id}>
+
+          <div className="product-card" key={product.product.id}>
             <h4>{product.product.name} </h4>
             <img src={product.product.images} alt={product.product.name} />
             <p className="description">{product.description}</p>
             <h4>{product.unit_amount / 100} Kr</h4>
-            <button onClick={() => addToCart(product)}>
+            <button className="cart-btn" onClick={() => addToCart(product)}>
               Lägg i varukorgen
             </button>
           </div>
@@ -111,7 +112,7 @@ export const ProductList = () => {
         <div>
           {cartItems.map((item, index) => (
             <div key={index}>
-              {item.name} - Antal: {item.quantity} - Pris: {item.quantity * item.priceData/100} Kr
+              {item.name} - {item.quantity} x {item.priceData / 100} SEK
             </div>
           ))}
           <div>
@@ -124,3 +125,4 @@ export const ProductList = () => {
 };
 
 export default ProductList;
+

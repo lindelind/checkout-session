@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const initStripe = require("../../utils/stripe");
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, street, streetNumber, postalCode, city } = req.body;
   //kolla så användare inte redan finns
   const customers = await fetchCustomers();
   const customerAlreadyExists = customers.find((c) => c.email === email);
@@ -20,6 +20,12 @@ const register = async (req, res) => {
   const stripeCustomer = {
     name,
     email,
+    address: {
+      street,
+      streetNumber,
+      postalCode,
+      city,
+    },
   };
 
   //add new customer to stripe
@@ -27,17 +33,25 @@ const register = async (req, res) => {
   const addCustomer = await stripe.customers.create({
     name: stripeCustomer.name,
     email: stripeCustomer.email,
+    address: {
+    line1: stripeCustomer.address.street,
+    line2: stripeCustomer.address.streetNumber,
+    postal_code: stripeCustomer.address.postalCode,
+    city: stripeCustomer.address.city
+    }
   });
 
   const customerId = addCustomer.id;
-
-//   req.session.customer = { id: customerId, name, email, password: hashedPassword };
 
   //spara till js-filen
   const newCustomer = {
     id: customerId,
     name,
     email,
+    street,
+    streetNumber,
+    postalCode,
+    city,
     password: hashedPassword,
   };
 

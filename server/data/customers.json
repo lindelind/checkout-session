@@ -1,8 +1,22 @@
 [
   {
-    "id": "cus_PtAVIXuyyT681Y",
-    "name": "Fanny Svensson",
-    "email": "fanny@svensson.se",
-    "password": "$2b$10$mM3MXBXiWx0DuL7WsOe86O3nDineZZZqmDFoPpEjGc/ThNReslIs2"
+    "id": "cus_PtjdOYOWxwGE3G",
+    "name": "Alicia",
+    "email": "alicia@alex.se",
+    "street": "Aliciagatan",
+    "streetNumber": "15",
+    "postalCode": "50750",
+    "city": "Borås",
+    "password": "$2b$10$z7NCFenSX9cJLc1a1L/u1eN5yphNaV36YQyTpUBM0TXg.diAsfWhi"
+  },
+  {
+    "id": "cus_PtmJ03CA8CRcPs",
+    "name": "Adam Svensson",
+    "email": "svensson@adam.se",
+    "street": "Kungsgatan",
+    "streetNumber": "35",
+    "postalCode": "70224",
+    "city": "örebro",
+    "password": "$2b$10$QeRe.ayxKfRWPGHyt88CA.SxVtrdLKGP5nGi05Jpr4J3KhNEGsErq"
   }
 ]

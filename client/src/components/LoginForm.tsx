@@ -28,6 +28,7 @@ export const LoginForm: React.FC<LoginData> = ({ handleLogin }) => {
         placeholder="Email"
         required
       />
+      <br />
       <input
         type="password"
         name="password"
@@ -36,6 +37,7 @@ export const LoginForm: React.FC<LoginData> = ({ handleLogin }) => {
         placeholder="Password"
         required
       />
+      <br />
       <button type="submit">Login</button>
     </form>
   );
