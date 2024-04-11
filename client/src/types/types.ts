@@ -34,3 +34,20 @@ interface AuthValues<T> {
   authorize: () => Promise<void>;
   logout: () => Promise<void>;
 }
+
+interface OrderData {
+  servicePoint: any;
+  products: number | string,
+  quantity: number,
+  id: string;
+  description: string,
+  price: {
+    unit_amount: number;
+  };
+
+  total: number;
+  orderNumber: string;
+  date: Date;
+  customerName: string;
+  customerEmail: string;
+}

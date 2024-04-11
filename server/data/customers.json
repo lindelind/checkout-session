@@ -18,5 +18,15 @@
     "postalCode": "70224",
     "city": "örebro",
     "password": "$2b$10$QeRe.ayxKfRWPGHyt88CA.SxVtrdLKGP5nGi05Jpr4J3KhNEGsErq"
+  },
+  {
+    "id": "cus_PuBfBcItOQtuJ8",
+    "name": "Fanny Svensson",
+    "email": "fanny@fanny.se",
+    "street": "Kungsgatan",
+    "streetNumber": "35",
+    "postalCode": "70224",
+    "city": "Örebro",
+    "password": "$2b$10$U6wjHdLm5eGkNVIjOc5VXOKeVV9vRGSSOcmFEZA4YfchswD7eC9bK"
   }
 ]

@@ -3,19 +3,19 @@ import axios from "axios";
 import { useAuth } from "./AuthProvider";
 
 export const ShowOrders = () => {
-  const [orders, setOrders] = useState<any[]>([]);
+  const [orders, setOrders] = useState<OrderData[]>([]);
 
   const { isLoggedIn, customer } = useAuth();
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        if (isLoggedIn && customer && customer.email) {
+        if (isLoggedIn) {
           const response = await axios.get(
             "http://localhost:3001/api/orders/getorders"
           );
           const ordersByCustomers = response.data.filter(
-            (order) => order.customerEmail === customer.email
+            (order: OrderData) => order.customerEmail === customer?.email
           );
           setOrders(ordersByCustomers);
         }
@@ -40,9 +40,12 @@ export const ShowOrders = () => {
                 {new Date(order.date).toLocaleString()} - <b>Total:</b>{" "}
                 {order.total / 100} SEK
               </p>
-              <p><b>Products:</b></p>
+              <p>Utlämningsställe: {order.servicePoint.service_point}</p>
+              <p>
+                <b>Products:</b>
+              </p>
               <div>
-                {order.products.map((product: any) => (
+                {order.products.map((product: OrderData) => (
                   <div key={product.id}>
                     {product.description} - {product.quantity} x{" "}
                     {product.price.unit_amount / 100} SEK

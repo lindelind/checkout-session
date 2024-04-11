@@ -24,11 +24,17 @@ interface CartItem {
 export const ProductList = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [total, setTotal] = useState<number>(0)
 
   useEffect(() => {
     getProducts();
     showCart();
   }, []);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cartItems]);
+
 
   const getProducts = async () => {
     try {
@@ -78,6 +84,13 @@ export const ProductList = () => {
   }
 };
 
+ const calculateTotal = () => {
+   let totalAmount = 0;
+   cartItems.forEach((item) => {
+     totalAmount += (item.quantity * item.priceData) / 100;
+   });
+   setTotal(totalAmount);
+ };
 
 
   const showCart = () => {
@@ -116,7 +129,7 @@ export const ProductList = () => {
             </div>
           ))}
           <div>
-            <h4>Totalt: </h4>
+            <h4>Totalt: {total} SEK</h4>
           </div>
         </div>
       </div>

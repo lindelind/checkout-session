@@ -1,30 +1,30 @@
 import axios from "axios";
-import { redirect } from "react-router-dom";
-import { useAuth } from "./AuthProvider";
-
 
 const Checkout = () => {
 
-   const { isLoggedIn, customer } = useAuth();
+const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
+      console.log(checkoutItem);
+      
+  const selectedPoint = JSON.parse(
+      localStorage.getItem("selectedServicePoint"))
+      console.log(selectedPoint)
 
   const handleCheckout = async () => {
     try {
-      const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
-      console.log(checkoutItem);
-
+      
       if (!checkoutItem) {
         console.error("No item in cart to checkout");
         return;
       }
 
-      // if(!isLoggedIn) {
-      //    return redirect ("/");
-      // }
-
+      //lägg till om kund ej är inloggad: skicka vidare till start/inloggningssida
 
       const response = await axios.post(
         "http://localhost:3001/payments/create-checkout-session",
-        checkoutItem,
+        {
+          checkoutItem,
+          selectedPoint
+        },
         {
           withCredentials: true,
           headers: {
