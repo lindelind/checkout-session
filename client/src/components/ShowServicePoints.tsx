@@ -16,23 +16,27 @@ export const ShowServicePoints = () => {
     if (selectedPoint) {
       setSelectedServicePoint(selectedPoint);
     }
-  }, []);
+  }, [setSelectedServicePoint]);
 
     useEffect(() => {
-      // fetchServicePoints();
-    }, [ShowServicePoints]);
+      fetchServicePoints();
+    }, []);
 
   useEffect(() => {
-    localStorage.setItem(
+  localStorage.setItem(
       "selectedServicePoint",
       JSON.stringify(selectedServicePoint)
     );
+    
   }, [selectedServicePoint]);
 
   const fetchServicePoints = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/postnord/servicepoints"
+        "http://localhost:3001/api/postnord/servicepoints",
+        {
+          withCredentials: true
+        }
       );
       const responseData = JSON.parse(response.data.slice(6, -1));
       if (response.status === 200) {
@@ -49,13 +53,15 @@ export const ShowServicePoints = () => {
 
   return (
     <div>
-      <h3>Välj utlämningsställe:</h3>
-      <button onClick={fetchServicePoints}>Fetch Service Points</button>
+      <h3 className="h3">Välj utlämningsställe:</h3>
       {servicePoints.length > 0 && (
         <>
-          <ul>
+          <div className="show-servicepoint-container">
             {servicePoints.map((servicePoint) => (
-              <li key={servicePoint.servicePointId}>
+              <div
+                className="radio-container"
+                key={servicePoint.servicePointId}
+              >
                 <input
                   type="radio"
                   id={servicePoint.servicePointId}
@@ -70,10 +76,10 @@ export const ShowServicePoints = () => {
                   {servicePoint.deliveryAddress.postalCode}{" "}
                   {servicePoint.deliveryAddress.city}
                 </label>
-              </li>
+              </div>
             ))}
-          </ul>
-          <p>
+          </div>
+          <p className="selected-servicepoint">
             Selected Service Point:{" "}
             {selectedServicePoint ? selectedServicePoint.name : "None"}
           </p>

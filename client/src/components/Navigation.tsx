@@ -1,6 +1,5 @@
 
 import {NavLink } from "react-router-dom";
-import { AuthorizationStatus } from "./AuthorizationStatus";
 
 export const Navigation = () => {
   return (

@@ -105,10 +105,8 @@ export const ProductList = () => {
 
   return (
     <div>
-      <h1>Swedish Fika</h1>
       <div className="product-container">
         {products.map((product) => (
-
           <div className="product-card" key={product.product.id}>
             <h4>{product.product.name} </h4>
             <img src={product.product.images} alt={product.product.name} />
@@ -120,7 +118,7 @@ export const ProductList = () => {
           </div>
         ))}
       </div>
-      <div>
+      <div className="cart-container">
         <h2>Din kundvagn</h2>
         <div>
           {cartItems.map((item, index) => (

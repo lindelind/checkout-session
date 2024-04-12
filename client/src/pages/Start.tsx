@@ -1,4 +1,4 @@
-// Start.js
+
 import { useEffect } from "react";
 import axios from "axios";
 import { LoginForm } from "../components/LoginForm";
@@ -8,6 +8,7 @@ import { useAuth } from "../components/AuthProvider";
 
 export const Start = () => {
   const { isLoggedIn, customer, authorize, logout} = useAuth();
+
 
   useEffect(() => { 
   }, [authorize, isLoggedIn, customer, logout]);
@@ -38,6 +39,7 @@ export const Start = () => {
           withCredentials: true,
         }
       );
+      alert("Tack för din registrering, " + registerData.name);
       console.log(response.data);
     } catch (error) {
       console.error("Error during registration:", error);
@@ -50,6 +52,10 @@ return (
     {isLoggedIn && customer && (
       <>
         <p>Välkommen {customer.name}!</p>
+        <h3>Kundinfo:</h3>
+        <p>Adress: {customer.street} {customer.streetNumber}</p>
+        <p>Postnummer: {customer.postalCode} {""} Stad: {customer.city}</p>
+        <p>Email: {customer.email}</p>
         <button onClick={logout}>Logout</button>
       </>
     )}

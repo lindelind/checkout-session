@@ -27,6 +27,10 @@ export const Confirmation = () => {
           if (response.status === 200) {
             setVerified(response.data.verified);
             setIsLoading(false);
+
+            localStorage.removeItem("varukorg");
+            localStorage.removeItem("selectedServicePoint");
+            
           }
         } catch (error) {
           console.error("Error verifying session:", error);

@@ -28,5 +28,45 @@
     "postalCode": "70224",
     "city": "Örebro",
     "password": "$2b$10$U6wjHdLm5eGkNVIjOc5VXOKeVV9vRGSSOcmFEZA4YfchswD7eC9bK"
+  },
+  {
+    "id": "cus_PuSh2DthuQ3Ktw",
+    "name": "Ylva",
+    "email": "lilla.ylva@gmail.com",
+    "street": "Kungsgatan",
+    "streetNumber": "35",
+    "postalCode": "70224",
+    "city": "örebro",
+    "password": "$2b$10$N6tXIQusigNoWuM4MVudnefQiUAo6Ui2jCbK4aWYMUGTmTiL2NbOu"
+  },
+  {
+    "id": "cus_PuTPzo6bQ7tb3B",
+    "name": "Anna Svensson",
+    "email": "svensson@anna.se",
+    "street": "Skillingsgatan 67",
+    "streetNumber": "57",
+    "postalCode": "50750",
+    "city": "Borås",
+    "password": "$2b$10$Nrj2tOp69yFb1peKBf3DneKS55z3Q5QsthcAuAYMU/YwNsS3E8.wa"
+  },
+  {
+    "id": "cus_PuWS0AE58m22A5",
+    "name": "Love Innevi",
+    "email": "love@love.se",
+    "street": "olaigatan",
+    "streetNumber": "1",
+    "postalCode": "70361",
+    "city": "Örebro",
+    "password": "$2b$10$s2cGfLarC2SuCfVaKEocieueua3hqrR1Nbfz.LDoPSnm1Q5i6fXQO"
+  },
+  {
+    "id": "cus_PuWaxhUVYA0Bdc",
+    "name": "Thomas",
+    "email": "thomas@thomas.se",
+    "street": "Industrigatan",
+    "streetNumber": "4C",
+    "postalCode": "11246",
+    "city": "Stockholm",
+    "password": "$2b$10$wXG/aDxnEG7vZU96zSJsoe.YhpnVspY5iQwQ0ZA9HXLHgGm3ciARu"
   }
 ]

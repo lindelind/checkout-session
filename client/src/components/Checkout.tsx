@@ -1,29 +1,31 @@
 import axios from "axios";
 
 const Checkout = () => {
-
-const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
-      console.log(checkoutItem);
-      
+  const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
+  console.log(checkoutItem);
+  
   const selectedPoint = JSON.parse(
-      localStorage.getItem("selectedServicePoint"))
-      console.log(selectedPoint)
+    localStorage.getItem("selectedServicePoint") || "[]");
+  console.log(selectedPoint);
 
   const handleCheckout = async () => {
     try {
-      
       if (!checkoutItem) {
         console.error("No item in cart to checkout");
         return;
       }
 
-      //lägg till om kund ej är inloggad: skicka vidare till start/inloggningssida
+      // Ensure selectedPoint is not null before proceeding with checkout
+      if (!selectedPoint) {
+        console.error("No selected service point");
+        return;
+      }
 
       const response = await axios.post(
         "http://localhost:3001/payments/create-checkout-session",
         {
           checkoutItem,
-          selectedPoint
+          selectedPoint,
         },
         {
           withCredentials: true,
@@ -33,7 +35,7 @@ const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
         }
       );
 
-      localStorage.setItem("sessionId", response.data.sessionId)
+      localStorage.setItem("sessionId", response.data.sessionId);
       window.location = response.data.url;
     } catch (error) {
       console.error("Error during checkout:", error);
@@ -42,8 +44,9 @@ const checkoutItem = JSON.parse(localStorage.getItem("varukorg")|| "[]");
 
   return (
     <div>
-      <h1>Payment</h1>
-      <button onClick={handleCheckout}>Checkout</button>
+      <div className="button-container">
+        <button onClick={handleCheckout}>Checkout</button>
+      </div>
     </div>
   );
 };

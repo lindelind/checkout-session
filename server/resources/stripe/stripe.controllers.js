@@ -11,6 +11,7 @@ const createCheckoutSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     customer: req.session.customer.id,
     mode: "payment",
+    allow_promotion_codes: true,
     metadata: {
       service_point: selectedPoint.name
     },
@@ -21,7 +22,7 @@ const createCheckoutSession = async (req, res) => {
       };
     }),
     success_url: "http://localhost:5173/confirmation",
-    cancel_url: "http://localhost:5173",
+    cancel_url: "http://localhost:5173/webshop",
   });
 
   res.status(200).json({ url: session.url, sessionId: session.id, servicePoint: session.metadata});
@@ -38,6 +39,7 @@ const verifySession = async (req, res) => {
 
         if (session.payment_status === "paid") {
         const lineItems = await stripe.checkout.sessions.listLineItems(sessionId)
+
 
 
         const order = {
