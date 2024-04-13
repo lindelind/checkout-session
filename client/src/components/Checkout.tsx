@@ -4,18 +4,20 @@ const Checkout = () => {
   const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
   console.log(checkoutItem);
   
-  const selectedPoint = JSON.parse(
-    localStorage.getItem("selectedServicePoint") || "[]");
-  console.log(selectedPoint);
+
 
   const handleCheckout = async () => {
+      const selectedPoint = JSON.parse(
+        localStorage.getItem("selectedServicePoint") || "[]"
+      );
+      console.log(selectedPoint);
+
     try {
       if (!checkoutItem) {
         console.error("No item in cart to checkout");
         return;
       }
 
-      // Ensure selectedPoint is not null before proceeding with checkout
       if (!selectedPoint) {
         console.error("No selected service point");
         return;
