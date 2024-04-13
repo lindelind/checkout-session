@@ -68,5 +68,15 @@
     "postalCode": "11246",
     "city": "Stockholm",
     "password": "$2b$10$wXG/aDxnEG7vZU96zSJsoe.YhpnVspY5iQwQ0ZA9HXLHgGm3ciARu"
+  },
+  {
+    "id": "cus_PusFrx4xLsx9oI",
+    "name": "Alinde",
+    "email": "alinde_osth@msn.com",
+    "street": "Kungsgatan",
+    "streetNumber": "35",
+    "postalCode": "70224",
+    "city": "Örebro",
+    "password": "$2b$10$tA3tXmSXxvE.vIVjgSuM9u2gntmKswgLstxDbDbD2oRP4sU8HjlW6"
   }
 ]

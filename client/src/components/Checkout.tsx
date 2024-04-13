@@ -1,16 +1,14 @@
 import axios from "axios";
 
 const Checkout = () => {
-  const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
-  console.log(checkoutItem);
-  
-
-
+ 
   const handleCheckout = async () => {
-      const selectedPoint = JSON.parse(
-        localStorage.getItem("selectedServicePoint") || "[]"
-      );
-      console.log(selectedPoint);
+    const selectedPoint = JSON.parse(
+      localStorage.getItem("selectedServicePoint") || "[]"
+    );
+    console.log(selectedPoint);
+
+    const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
 
     try {
       if (!checkoutItem) {
@@ -42,6 +40,10 @@ const Checkout = () => {
     } catch (error) {
       console.error("Error during checkout:", error);
     }
+
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("servicePoint");
+
   };
 
   return (
