@@ -21,10 +21,12 @@ Krav för väl godkänt:
 
 # Du bygger och kör projektet såhär:
 
-* cd client
-* npm i
-* npm run dev
+- cd client
+- npm i
+- npm run dev
 
-* cd server 
-* npm i
-* nodemon server
+-  cd server 
+-  npm i
+-  nodemon server
+
+[Githublänk:](https://github.com/lindelind/checkout-session)
