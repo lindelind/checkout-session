@@ -1,31 +1,31 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
   width: 100%;
+ 
 }
 
 header {
     width: 100%;
-    height: 5dvh;
+    height: 30dvh;
+     background-image: url("../img/swedishfikanew.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 700px;
     
 }
 
 main {
     width: 100%;
-    min-height: 50dvh;
-   
-
-
+    min-height: 40dvh;
 }
 
 footer {
-   
     width: 100%;
-    height: 20dvh;
+    height: 10dvh;
+}
 
+@media(max-width: 450px){
+    
+    header{
+        background-size: 450px;
+    }
 }

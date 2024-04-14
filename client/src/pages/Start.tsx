@@ -1,17 +1,15 @@
-// Start.js
+
 import { useEffect } from "react";
 import axios from "axios";
-import { AuthorizationStatus } from "../components/AuthorizationStatus";
 import { LoginForm } from "../components/LoginForm";
-import { RegisterForm } from "../components/RegisterForm";
-import { NavLink } from "react-router-dom";
 import { useAuth } from "../components/AuthProvider";
 
 export const Start = () => {
-  const { isLoggedIn, customer, authorize} = useAuth();
+  const { isLoggedIn, customer, authorize, logout} = useAuth();
 
-  useEffect(() => {
-  }, [authorize, isLoggedIn, customer]);
+
+  useEffect(() => { 
+  }, [authorize, isLoggedIn, customer, logout]);
 
   const handleLogin = async (loginData: LoginData) => {
     try {
@@ -30,30 +28,23 @@ export const Start = () => {
     }
   };
 
-  const handleRegister = async (registerData:RegisterData) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/auth/register",
-        registerData,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error during registration:", error);
-    }
-  };
 
+return (
+  <>
+    {isLoggedIn && customer && (
+      <>
+        <div className="start-page">
+          <p>Welcome {customer.name}!</p>
 
-  return (
-    <>
-      <NavLink to={"/webshop"}>Gå till Webshop</NavLink>
-      <AuthorizationStatus />
-      <h2>Login</h2>
-      <LoginForm handleLogin={handleLogin} />
-      <h2>Register</h2>
-      <RegisterForm handleRegister={handleRegister} />
-    </>
-  );
-};
+          <button onClick={logout}>Logout</button>
+        </div>
+      </>
+    )}
+    {!isLoggedIn && !customer && (
+      <>
+        <LoginForm handleLogin={handleLogin} />
+      </>
+    )}
+  </>
+);
+}

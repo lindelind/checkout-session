@@ -48,6 +48,9 @@ export const AuthProvider = ({ children}: AuthProviderProps) => {
       await axios.post("http://localhost:3001/api/auth/logout", null, {
         withCredentials: true,
       });
+
+      setIsLoggedIn(false);
+      window.location.reload()
     } catch (error) {
       console.error("Error during logout:", error);
     }

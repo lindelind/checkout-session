@@ -24,11 +24,17 @@ interface CartItem {
 export const ProductList = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [total, setTotal] = useState<number>(0)
 
   useEffect(() => {
     getProducts();
     showCart();
   }, []);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cartItems]);
+
 
   const getProducts = async () => {
     try {
@@ -78,6 +84,13 @@ export const ProductList = () => {
   }
 };
 
+ const calculateTotal = () => {
+   let totalAmount = 0;
+   cartItems.forEach((item) => {
+     totalAmount += (item.quantity * item.priceData) / 100;
+   });
+   setTotal(totalAmount);
+ };
 
 
   const showCart = () => {
@@ -92,30 +105,29 @@ export const ProductList = () => {
 
   return (
     <div>
-      <h1>Swedish Fika</h1>
       <div className="product-container">
         {products.map((product) => (
-          <div key={product.product.id}>
+          <div className="product-card" key={product.product.id}>
             <h4>{product.product.name} </h4>
             <img src={product.product.images} alt={product.product.name} />
             <p className="description">{product.description}</p>
             <h4>{product.unit_amount / 100} Kr</h4>
-            <button onClick={() => addToCart(product)}>
-              Lägg i varukorgen
+            <button className="cart-btn" onClick={() => addToCart(product)}>
+              Add to cart
             </button>
           </div>
         ))}
       </div>
-      <div>
-        <h2>Din kundvagn</h2>
+      <div className="cart-container">
+        <h2>Cart</h2>
         <div>
           {cartItems.map((item, index) => (
             <div key={index}>
-              {item.name} - Antal: {item.quantity} - Pris: {item.quantity * item.priceData/100} Kr
+              {item.name} - {item.quantity} x {item.priceData / 100} SEK
             </div>
           ))}
           <div>
-            <h4>Totalt: </h4>
+            <h4>Total amount: {total} SEK</h4>
           </div>
         </div>
       </div>
@@ -124,3 +136,4 @@ export const ProductList = () => {
 };
 
 export default ProductList;
+

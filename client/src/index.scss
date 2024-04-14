@@ -1,37 +1,62 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
-
+  color: black;
 }
 
-button {
-  margin: 5px;
+.error-message {
+  color: red ;
+  font-size: 20px;
+  background-color: white;
 }
 
-img {
-  width: 150px;
-  
+h2 {
+  color:#ef802b;
 }
 
-.cart-img {
-  width: 30px;
+
+.login-link {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+     &:hover {
+      text-decoration: underline;
+    }
 }
 
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.not-logged-in {
+  margin-top: 40px;
+  padding: 10px;
 }
 
-.description {
-  width: 500px;
+.start-page {
+  margin-top: 70px;
+}
+
+.orders {
+  margin-top: 70px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.confirmation {
+
+  margin-top: 60px;
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+}

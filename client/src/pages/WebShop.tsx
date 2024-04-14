@@ -1,26 +1,35 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthProvider"; 
-import { AuthorizationStatus } from "../components/AuthorizationStatus";
 import ProductList from "../components/ProductList";
 import Checkout from "../components/Checkout";
-import { NavLink } from "react-router-dom";
+import { ShowServicePoints } from "../components/ShowServicePoints";
 
 export const WebShop = () => {
-  const { isLoggedIn, customer, authorize} = useAuth(); 
+  const navigate = useNavigate();
+  const { isLoggedIn, customer, authorize } = useAuth();
 
-   useEffect(() => {
-   }, [authorize, isLoggedIn, customer]);
+  useEffect(() => {}, [authorize, isLoggedIn, customer]);
+
+  const handleLogin = () => {
+    navigate("/");
+  };
+
 
   return (
     <>
-      <NavLink to={"/"}>Tillbaka till startsidan</NavLink>
-      <AuthorizationStatus/>
-       {isLoggedIn && customer && (
+      {isLoggedIn ? (
         <>
           <ProductList />
+          <ShowServicePoints />
           <Checkout />
         </>
+      ) : (
+        <div className="not-logged-in">
+          <p>Please log in to access the webshop</p>
+          <button onClick={handleLogin}>Login</button>
+        </div>
       )}
-      </>
+    </>
   );
 };
