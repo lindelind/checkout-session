@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { LoginForm } from "../components/LoginForm";
 import { useAuth } from "../components/AuthProvider";
-import { Link } from "react-router-dom";
-
 
 export const Start = () => {
   const { isLoggedIn, customer, authorize, logout} = useAuth();
