@@ -51,3 +51,14 @@ interface OrderData {
   customerName: string;
   customerEmail: string;
 }
+
+interface ServicePoint {
+  servicePointId: string;
+  name: string;
+  deliveryAddress: {
+    streetName: string;
+    streetNumber: string;
+    postalCode: string;
+    city: string;
+  };
+}

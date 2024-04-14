@@ -3,15 +3,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-//skickas inte med det senaste icklickade valet på servicepoint, utan det innan. Kolla på det? 
-
 export const ShowServicePoints = () => {
-  const [servicePoints, setServicePoints] = useState([]);
-  const [selectedServicePoint, setSelectedServicePoint] = useState(null);
+  const [servicePoints, setServicePoints] = useState<ServicePoint[]>([]); 
+  const [selectedServicePoint, setSelectedServicePoint] = useState<ServicePoint | null>();
+
 
   useEffect(() => {
     const selectedPoint = JSON.parse(
-      localStorage.getItem("selectedServicePoint")
+      localStorage.getItem("selectedServicePoint") || "null"
     );
     if (selectedPoint) {
       setSelectedServicePoint(selectedPoint);
@@ -57,7 +56,7 @@ export const ShowServicePoints = () => {
       {servicePoints.length > 0 && (
         <>
           <div className="show-servicepoint-container">
-            {servicePoints.map((servicePoint) => (
+            {servicePoints?.map((servicePoint: ServicePoint) => (
               <div
                 className="radio-container"
                 key={servicePoint.servicePointId}

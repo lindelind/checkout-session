@@ -60,9 +60,7 @@ const verifySession = async (req, res) => {
     }
   }
 
-// }
-    
-
+  
 const getProducts = async (req, res) => {
   const stripe = initStripe();
   const productPriceData = await stripe.prices.list({

@@ -1,25 +1,29 @@
+import{ useState } from "react";
 import axios from "axios";
 
 const Checkout = () => {
- 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleCheckout = async () => {
     const selectedPoint = JSON.parse(
-      localStorage.getItem("selectedServicePoint") || "[]"
+      localStorage.getItem("selectedServicePoint") || "null"
     );
-    console.log(selectedPoint);
 
-    const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
+    const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "null");
 
     try {
-      if (!checkoutItem) {
-        console.error("No item in cart to checkout");
+      if (checkoutItem.length === 0) {
+        setErrorMessage(
+          "Your shopping cart is empty. Please add items before proceeding to checkout."
+        );
         return;
       }
 
       if (!selectedPoint) {
-        console.error("No selected service point");
+        setErrorMessage("No selected service point");
         return;
       }
+
 
       const response = await axios.post(
         "http://localhost:3001/payments/create-checkout-session",
@@ -41,13 +45,13 @@ const Checkout = () => {
       console.error("Error during checkout:", error);
     }
 
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("servicePoint");
-
+    localStorage.removeItem("varukorg");
+    localStorage.removeItem("selectedServicePoint");
   };
 
   return (
     <div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="button-container">
         <button onClick={handleCheckout}>Checkout</button>
       </div>

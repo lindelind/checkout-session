@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuth } from "./AuthProvider";
 
 export const ShowOrders = () => {
-  const [orders, setOrders] = useState<OrderData[]>([]);
+  const [orders, setOrders] = useState<OrderData | null>();
 
   const { isLoggedIn, customer } = useAuth();
 
