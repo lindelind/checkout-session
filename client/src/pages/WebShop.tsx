@@ -15,6 +15,7 @@ export const WebShop = () => {
     navigate("/");
   };
 
+
   return (
     <>
       {isLoggedIn ? (

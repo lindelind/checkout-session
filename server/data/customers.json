@@ -22,6 +22,7 @@
   {
     "id": "cus_PuBfBcItOQtuJ8",
     "name": "Fanny Svensson",
+
     "email": "fanny@fanny.se",
     "street": "Kungsgatan",
     "streetNumber": "35",
@@ -108,5 +109,15 @@
     "postalCode": "49893",
     "city": "fjkefjef",
     "password": "$2b$10$Z1mI2sKglhhnyE2CHqSRyOJJUSrZk3sEevpQ2lt5IeUsaH3v12tTa"
+=======
+    "email": "fanny@svensson.se",
+    "password": "$2b$10$mM3MXBXiWx0DuL7WsOe86O3nDineZZZqmDFoPpEjGc/ThNReslIs2"
+  },
+  {
+    "id": "cus_PtjE91vGTdaCBX",
+    "name": "Alinde",
+    "email": "lindis@lindis.se",
+    "password": "$2b$10$NqggqOCpH8.u9/PWmMpEouAebzj9yv6c4k9hrIbW09eDx9sFdmZfi"
+
   }
 ]
