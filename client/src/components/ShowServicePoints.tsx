@@ -52,7 +52,7 @@ export const ShowServicePoints = () => {
 
   return (
     <div>
-      <h3 className="h3">Välj utlämningsställe:</h3>
+      <h3 className="h3">Choose Servicepoint:</h3>
       {servicePoints.length > 0 && (
         <>
           <div className="show-servicepoint-container">

@@ -78,5 +78,15 @@
     "postalCode": "70224",
     "city": "Örebro",
     "password": "$2b$10$tA3tXmSXxvE.vIVjgSuM9u2gntmKswgLstxDbDbD2oRP4sU8HjlW6"
+  },
+  {
+    "id": "cus_PvEIvDTcPyEjAS",
+    "name": "Petra V",
+    "email": "petra@petra.se",
+    "street": "olaigatan",
+    "streetNumber": "1",
+    "postalCode": "70361",
+    "city": "örebro",
+    "password": "$2b$10$WfCDNRDOUtMlyMrjGzm.guv5.Df16aDwbo9/681bgjrWVvNxsUpl."
   }
 ]

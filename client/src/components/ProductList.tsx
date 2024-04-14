@@ -113,13 +113,13 @@ export const ProductList = () => {
             <p className="description">{product.description}</p>
             <h4>{product.unit_amount / 100} Kr</h4>
             <button className="cart-btn" onClick={() => addToCart(product)}>
-              Lägg i varukorgen
+              Add to cart
             </button>
           </div>
         ))}
       </div>
       <div className="cart-container">
-        <h2>Din kundvagn</h2>
+        <h2>Cart</h2>
         <div>
           {cartItems.map((item, index) => (
             <div key={index}>
@@ -127,7 +127,7 @@ export const ProductList = () => {
             </div>
           ))}
           <div>
-            <h4>Totalt: {total} SEK</h4>
+            <h4>Total amount: {total} SEK</h4>
           </div>
         </div>
       </div>

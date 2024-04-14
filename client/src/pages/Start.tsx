@@ -51,10 +51,10 @@ return (
   <>
     {isLoggedIn && customer && (
       <>
-        <p>Välkommen {customer.name}!</p>
-        <h3>Kundinfo:</h3>
-        <p>Adress: {customer.street} {customer.streetNumber}</p>
-        <p>Postnummer: {customer.postalCode} {""} Stad: {customer.city}</p>
+        <p>Welcome {customer.name}!</p>
+        <h3>Customer info:</h3>
+        <p>Address: {customer.street} {customer.streetNumber}</p>
+        <p>Postal Code: {customer.postalCode} {""} City: {customer.city}</p>
         <p>Email: {customer.email}</p>
         <button onClick={logout}>Logout</button>
       </>

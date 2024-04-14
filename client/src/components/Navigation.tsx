@@ -5,9 +5,9 @@ export const Navigation = () => {
   return (
     <>
       <nav>
-        <NavLink to={"/"}>Start</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/webshop"}>WebShop</NavLink>
-        <NavLink to={"/orderhistory"}>Mina ordrar</NavLink>
+        <NavLink to={"/orderhistory"}>Orders</NavLink>
       </nav>
     </>
   );

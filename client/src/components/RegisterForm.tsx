@@ -1,4 +1,4 @@
-// RegisterForm.tsx
+
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 interface RegisterData {
@@ -31,7 +31,18 @@ export const RegisterForm: React.FC<RegisterData> = ({ handleRegister }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleRegister(registerData);
+
+     setRegisterData({
+       name: "",
+       email: "",
+       password: "",
+       street: "",
+       streetNumber: "",
+       postalCode: "",
+       city: "",
+     });
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
