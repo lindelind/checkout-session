@@ -28,7 +28,7 @@ export const ShowOrders = () => {
   }, [isLoggedIn, customer]); 
 
   return (
-    <div>
+    <div className="orders">
       <h2>Orders by {customer?.name}</h2>
       {Array.isArray(orders) && orders.length > 0 ? (
         <div>
@@ -40,7 +40,7 @@ export const ShowOrders = () => {
                 {new Date(order.date).toLocaleString()} - <b>Total:</b>{" "}
                 {order.total / 100} SEK
               </p>
-              <p>Utlämningsställe: {order.servicePoint.service_point}</p>
+              <p>Servicepoint: {order.servicePoint.service_point}</p>
               <p>
                 <b>Products:</b>
               </p>

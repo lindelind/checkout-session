@@ -5,29 +5,34 @@ import axios from "axios";
 
 export const ShowServicePoints = () => {
   const [servicePoints, setServicePoints] = useState<ServicePoint[]>([]); 
-  const [selectedServicePoint, setSelectedServicePoint] = useState<ServicePoint | null>();
+  const [selectedServicePoint, setSelectedServicePoint] = useState<ServicePoint>();
 
 
-  useEffect(() => {
-    const selectedPoint = JSON.parse(
-      localStorage.getItem("selectedServicePoint") || "null"
-    );
-    if (selectedPoint) {
-      setSelectedServicePoint(selectedPoint);
-    }
-  }, [setSelectedServicePoint]);
 
     useEffect(() => {
       fetchServicePoints();
     }, []);
 
-  useEffect(() => {
-  localStorage.setItem(
+useEffect(() => {
+  const storedServicePoint = JSON.parse(
+    localStorage.getItem("selectedServicePoint")
+  );
+  if (storedServicePoint) {
+    setSelectedServicePoint(storedServicePoint);
+  } else if (servicePoints.length > 0) {
+    setSelectedServicePoint(servicePoints[0]);
+    localStorage.setItem(
       "selectedServicePoint",
-      JSON.stringify(selectedServicePoint)
+      JSON.stringify(servicePoints[0])
     );
-    
-  }, [selectedServicePoint]);
+  }
+}, [servicePoints]);
+
+const handleServicePointChange = (servicePoint: ServicePoint) => {
+  setSelectedServicePoint(servicePoint);
+  localStorage.setItem("selectedServicePoint", JSON.stringify(servicePoint));
+};
+
 
   const fetchServicePoints = async () => {
     try {
@@ -53,7 +58,7 @@ export const ShowServicePoints = () => {
   return (
     <div>
       <h3 className="h3">Choose Servicepoint:</h3>
-      {servicePoints.length > 0 && (
+      {servicePoints?.length > 0 && (
         <>
           <div className="show-servicepoint-container">
             {servicePoints?.map((servicePoint: ServicePoint) => (
@@ -66,22 +71,22 @@ export const ShowServicePoints = () => {
                   id={servicePoint.servicePointId}
                   name="servicePoint"
                   value={servicePoint.servicePointId}
-                  onChange={() => setSelectedServicePoint(servicePoint)}
+                  onChange={() => handleServicePointChange(servicePoint)}
                 />
                 <label htmlFor={servicePoint.servicePointId}>
-                  {servicePoint.name} -{" "}
-                  {servicePoint.deliveryAddress.streetName}{" "}
+                  {servicePoint.name} - {""}
+                  {/* {servicePoint.deliveryAddress.streetName}{" "}
                   {servicePoint.deliveryAddress.streetNumber},{" "}
-                  {servicePoint.deliveryAddress.postalCode}{" "}
+                  {servicePoint.deliveryAddress.postalCode}{" "} */}
                   {servicePoint.deliveryAddress.city}
                 </label>
               </div>
             ))}
           </div>
-          <p className="selected-servicepoint">
+          <h2 className="selected-servicepoint">
             Selected Service Point:{" "}
             {selectedServicePoint ? selectedServicePoint.name : "None"}
-          </p>
+          </h2>
         </>
       )}
     </div>

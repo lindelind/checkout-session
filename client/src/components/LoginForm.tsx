@@ -1,5 +1,6 @@
 // LoginForm.tsx
 import React, { ChangeEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface LoginData {
   handleLogin: (loginData: { email: string; password: string }) => void;
@@ -39,6 +40,9 @@ export const LoginForm: React.FC<LoginData> = ({ handleLogin }) => {
       />
       <br />
       <button type="submit">Login</button>
+      <p className="registration">
+        New customer? <Link to={"/register"}>Register here</Link>
+      </p>
     </form>
   );
 };

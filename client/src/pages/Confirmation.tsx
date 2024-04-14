@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Confirmation = () => {
   const [verified, setVerified] = useState(false);
@@ -43,8 +43,8 @@ export const Confirmation = () => {
 
 
   return (
-    <div>
-      <NavLink to={"/webshop"}>Tillbaka till Webshop</NavLink>
+    <div className="confirmation">
+      <Link to={"/webshop"}>Go back to Webshop</Link>
       <h3>{verified && !isLoading ? "TACK FÖR DITT KÖP ✅" : "Loading..."}</h3>
     </div>
   );

@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { LoginForm } from "../components/LoginForm";
-import { RegisterForm } from "../components/RegisterForm";
 import { useAuth } from "../components/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 export const Start = () => {
@@ -30,41 +30,21 @@ export const Start = () => {
     }
   };
 
-  const handleRegister = async (registerData:RegisterData) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/auth/register",
-        registerData,
-        {
-          withCredentials: true,
-        }
-      );
-      alert("Tack för din registrering, " + registerData.name);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error during registration:", error);
-    }
-  };
-
 
 return (
   <>
     {isLoggedIn && customer && (
       <>
-        <p>Welcome {customer.name}!</p>
-        <h3>Customer info:</h3>
-        <p>Address: {customer.street} {customer.streetNumber}</p>
-        <p>Postal Code: {customer.postalCode} {""} City: {customer.city}</p>
-        <p>Email: {customer.email}</p>
-        <button onClick={logout}>Logout</button>
+        <div className="start-page">
+          <p>Welcome {customer.name}!</p>
+
+          <button onClick={logout}>Logout</button>
+        </div>
       </>
     )}
     {!isLoggedIn && !customer && (
       <>
-        <h2>Login</h2>
         <LoginForm handleLogin={handleLogin} />
-        <h2>Register</h2>
-        <RegisterForm handleRegister={handleRegister} />
       </>
     )}
   </>

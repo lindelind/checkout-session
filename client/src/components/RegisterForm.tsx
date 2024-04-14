@@ -1,5 +1,6 @@
 
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface RegisterData {
   handleRegister: (registerData: {
@@ -110,6 +111,12 @@ export const RegisterForm: React.FC<RegisterData> = ({ handleRegister }) => {
       />
       <br />
       <button type="submit">Register</button>
+      <p className="login-here">
+          Already a customer?{" "}
+          <Link className="login-link" to={"/"}>
+            Click here to login
+          </Link>
+        </p>
     </form>
   );
 };

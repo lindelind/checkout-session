@@ -20,7 +20,7 @@ export const OrderHistory = () => {
             <ShowOrders/>
             </>
         ) : (
-            <div>
+            <div className="not-logged-in">
             <p>Please log in to access your orders</p>
             <button onClick={handleLogin}>Login</button>
             </div>

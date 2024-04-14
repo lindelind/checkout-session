@@ -88,5 +88,25 @@
     "postalCode": "70361",
     "city": "örebro",
     "password": "$2b$10$WfCDNRDOUtMlyMrjGzm.guv5.Df16aDwbo9/681bgjrWVvNxsUpl."
+  },
+  {
+    "id": "cus_PvLXHfeuLjEwui",
+    "name": "Ivar",
+    "email": "ivar@ivar.se",
+    "street": "olaigatan",
+    "streetNumber": "1",
+    "postalCode": "70361",
+    "city": "Örebro",
+    "password": "$2b$10$M8.znT9X0qDIRzX3tu4GUebuHP1TGw.BEtmfwlzqfJJE/Gs93PA4."
+  },
+  {
+    "id": "cus_PvLa5Hgw8SDwCk",
+    "name": "Ulla",
+    "email": "ulla@ulla.se",
+    "street": "djwkdwkdj",
+    "streetNumber": "8",
+    "postalCode": "49893",
+    "city": "fjkefjef",
+    "password": "$2b$10$Z1mI2sKglhhnyE2CHqSRyOJJUSrZk3sEevpQ2lt5IeUsaH3v12tTa"
   }
 ]

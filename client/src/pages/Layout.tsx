@@ -12,7 +12,11 @@ export const Layout = () => {
          <main>
            <Outlet />
          </main>
-         <footer></footer>
+         <footer>
+           <p className="fika-quote">
+             Traditional Swedish fika is a moment of pleasure...
+           </p>
+         </footer>
        </>
      );
 }

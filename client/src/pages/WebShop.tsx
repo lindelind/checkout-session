@@ -24,7 +24,7 @@ export const WebShop = () => {
           <Checkout />
         </>
       ) : (
-        <div>
+        <div className="not-logged-in">
           <p>Please log in to access the webshop</p>
           <button onClick={handleLogin}>Login</button>
         </div>

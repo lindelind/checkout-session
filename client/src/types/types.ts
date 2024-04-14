@@ -62,3 +62,7 @@ interface ServicePoint {
     city: string;
   };
 }
+
+interface ServicePointResponse {
+  servicePoints?: ServicePoint[];
+}

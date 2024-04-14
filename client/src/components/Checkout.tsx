@@ -4,23 +4,20 @@ import axios from "axios";
 const Checkout = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
+ 
+
   const handleCheckout = async () => {
     const selectedPoint = JSON.parse(
-      localStorage.getItem("selectedServicePoint") || "null"
+      localStorage.getItem("selectedServicePoint")
     );
 
-    const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "null");
+    const checkoutItem = JSON.parse(localStorage.getItem("varukorg") || "[]");
 
     try {
-      if (checkoutItem.length === 0) {
+      if (checkoutItem === null || checkoutItem.length === 0) {
         setErrorMessage(
           "Your shopping cart is empty. Please add items before proceeding to checkout."
         );
-        return;
-      }
-
-      if (!selectedPoint) {
-        setErrorMessage("No selected service point");
         return;
       }
 
