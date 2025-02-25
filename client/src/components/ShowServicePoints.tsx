@@ -47,7 +47,6 @@ const handleServicePointChange = (servicePoint: ServicePoint) => {
         setServicePoints(
           responseData.servicePointInformationResponse.servicePoints
         );
-        console.log(responseData.servicePointInformationResponse.servicePoints);
         
       }
     } catch (error) {

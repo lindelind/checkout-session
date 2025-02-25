@@ -78,7 +78,6 @@ const login = async (req, res) => {
 
   //skicka tillbaka ett svar
   res.status(200).json(customerExists);
-  console.log(req.session.customer);
 };
 
 const logout = (req, res) => {

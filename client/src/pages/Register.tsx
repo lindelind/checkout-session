@@ -17,7 +17,6 @@ export const Register = () => {
           }
         );
         setRegMessage("Thank you for your registration.");
-        console.log(response.data);
       } catch (error) {
         console.error("Error during registration:", error);
       }

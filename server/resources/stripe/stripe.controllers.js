@@ -1,11 +1,9 @@
 
-
 const initStripe = require("../../utils/stripe");
 const fs = require("fs").promises
 
 const createCheckoutSession = async (req, res) => {
     const { checkoutItem, selectedPoint } = req.body;
-    console.log(req.body)
   const stripe = initStripe();
 
   const session = await stripe.checkout.sessions.create({
@@ -26,7 +24,6 @@ const createCheckoutSession = async (req, res) => {
   });
 
   res.status(200).json({ url: session.url, sessionId: session.id, servicePoint: session.metadata});
-  console.log(session.metadata);
 };
 
 const verifySession = async (req, res) => {
@@ -65,6 +62,7 @@ const getProducts = async (req, res) => {
   const stripe = initStripe();
   const productPriceData = await stripe.prices.list({
     expand: ["data.product"],
+    active: true,
   });
 
   res.status(200).json(productPriceData);

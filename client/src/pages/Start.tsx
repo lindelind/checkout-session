@@ -22,7 +22,6 @@ export const Start = () => {
       );
       
       await authorize();
-      console.log("inloggad:" + response.data);
     }catch(error){
       console.error("Error during login:", error);
     }
